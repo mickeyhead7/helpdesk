@@ -1,11 +1,10 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import Link from 'gatsby-link';
+import { extractTagsFromMarkdown } from '../packages/helpers/content';
+import BodyHeader from '../components/BodyHeader';
 import ArticleList from '../components/ArticleList';
 import TagList from '../components/TagList';
-import { extractTagsFromMarkdown } from '../packages/helpers/content';
-
-import './styles.scss';
 
 const IndexPage = ({ data }) => {
   const { edges: articles } = data.allMarkdownRemark;
@@ -13,9 +12,9 @@ const IndexPage = ({ data }) => {
 
   return (
     <div>
-      <header className="bodyHeader">
+      <BodyHeader>
         <h1>Welcome to the helpdesk</h1>
-      </header>
+      </BodyHeader>
       <section>
         <header>
           <h2>Top articles</h2>

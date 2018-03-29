@@ -15,7 +15,7 @@ const TemplateWrapper = ({ children, location }) => (
       ]}
     />
     <Header location={location} />
-    <main className="bodyContent">
+    <main className="mainContent">
       {children()}
     </main>
   </div>

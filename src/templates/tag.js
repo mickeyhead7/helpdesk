@@ -1,15 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
+import BodyHeader from '../components/BodyHeader';
 
 const TagTemplate = ({ pathContext }) => {
   const { articles, tagName } = pathContext;
 
   return articles ? (
     <div>
-      <header>
+      <BodyHeader>
         <h1>Articles about {tagName}</h1>
-      </header>
+      </BodyHeader>
       <section>
         <ul>
           {articles.map((article, index) => {

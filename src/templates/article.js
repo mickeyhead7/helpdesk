@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import Link from 'gatsby-link';
+import BodyHeader from '../components/BodyHeader';
 
 const ArticleTemplate = ({ data, location, pathContext }) => {
   const { markdownRemark: article } = data;
@@ -12,10 +13,10 @@ const ArticleTemplate = ({ data, location, pathContext }) => {
   return (
     <article>
       <Helmet title={title} />
-      <header>
+      <BodyHeader>
         <h1>{title}</h1>
         <small>{date}</small>
-      </header>
+      </BodyHeader>
       <section>
         <div dangerouslySetInnerHTML={{ __html: html }} />
       </section>

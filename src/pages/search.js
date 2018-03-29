@@ -2,9 +2,8 @@ import React from 'react';
 import Link from 'gatsby-link';
 import propTypes from 'prop-types';
 import queryString from 'query-string';
+import BodyHeader from '../components/BodyHeader';
 import ArticleList from '../components/ArticleList';
-
-import './styles.scss';
 
 const articles = [];
 
@@ -13,9 +12,9 @@ const SearchPage = props => {
   
   return (
     <section>
-      <header className="bodyHeader">
+      <BodyHeader>
         <h1>Search results for "{parsed.search}"</h1>
-      </header>
+      </BodyHeader>
       <ArticleList articles={articles} />
     </section>
   );
