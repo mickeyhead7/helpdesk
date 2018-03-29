@@ -4,7 +4,7 @@ import Link from 'gatsby-link';
 import BodyHeader from '../components/BodyHeader';
 
 const TagsTemplate = ({ pathContext }) => {
-  const { tags } = pathContext
+  const { tags } = pathContext;
 
   return tags ? (
     <div>
@@ -26,10 +26,10 @@ const TagsTemplate = ({ pathContext }) => {
   ) : null;
 };
 
-TagsTemplate.PropTypes = {
+TagsTemplate.propTypes = {
   pathContext: PropTypes.shape({
-    tags: PropTypes.arrayOf(PropTypes.string.isRequired)
-  }).isRequired
+    tags: PropTypes.arrayOf(PropTypes.string.isRequired),
+  }).isRequired,
 };
 
-export default TagsTemplate
+export default TagsTemplate;

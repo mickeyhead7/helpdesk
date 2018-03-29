@@ -4,10 +4,10 @@ import Helmet from 'react-helmet';
 import Link from 'gatsby-link';
 import BodyHeader from '../components/BodyHeader';
 
-const ArticleTemplate = ({ data, location, pathContext }) => {
+const ArticleTemplate = ({ data, pathContext }) => {
   const { markdownRemark: article } = data;
   const { frontmatter, html } = article;
-  const { date, title} = frontmatter;
+  const { date, title } = frontmatter;
   const { prev, next } = pathContext;
 
   return (
@@ -44,33 +44,33 @@ const ArticleTemplate = ({ data, location, pathContext }) => {
   );
 };
 
-ArticleTemplate.PropTypes = {
+ArticleTemplate.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.shape({
       frontmatter: PropTypes.shape({
         date: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired
+        title: PropTypes.string.isRequired,
       }).isRequired,
-      html: PropTypes.string.isRequired
-    }).isRequired
+      html: PropTypes.string.isRequired,
+    }).isRequired,
   }).isRequired,
-  location: PropTypes.object.isRequired,
   pathContext: PropTypes.shape({
     next: PropTypes.shape({
       frontmatter: PropTypes.shape({
         path: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired
-      }).isRequired
+        title: PropTypes.string.isRequired,
+      }).isRequired,
     }),
     prev: PropTypes.shape({
       frontmatter: PropTypes.shape({
         path: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired
-      }).isRequired
-    })
-  }).isRequired
+        title: PropTypes.string.isRequired,
+      }).isRequired,
+    }),
+  }).isRequired,
 };
 
+/* eslint-disable no-undef */
 export const query = graphql`
   query ArticleByPath($path: String!) {
     markdownRemark(frontmatter: { path: { eq: $path } }) {

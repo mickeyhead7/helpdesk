@@ -1,6 +1,5 @@
 import React from 'react';
-import propTypes from 'prop-types';
-import Link from 'gatsby-link';
+import PropTypes from 'prop-types';
 import { extractTagsFromMarkdown } from '../packages/helpers/content';
 import BodyHeader from '../components/BodyHeader';
 import ArticleList from '../components/ArticleList';
@@ -29,11 +28,14 @@ const IndexPage = ({ data }) => {
 };
 
 IndexPage.propTypes = {
-  location: propTypes.shape({
-    search: propTypes.string.isRequired,
+  data: PropTypes.shape({
+    allMarkdownRemark: PropTypes.shape({
+      edges: PropTypes.array.isRequired,
+    }).isRequired,
   }).isRequired,
 };
 
+/* eslint-disable no-undef */
 export const query = graphql`
   query IndexQuery {
     allMarkdownRemark {
@@ -54,4 +56,4 @@ export const query = graphql`
   }
 `;
 
-export default IndexPage
+export default IndexPage;

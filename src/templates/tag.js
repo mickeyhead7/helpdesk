@@ -13,12 +13,12 @@ const TagTemplate = ({ pathContext }) => {
       </BodyHeader>
       <section>
         <ul>
-          {articles.map((article, index) => {
+          {articles.map((article) => {
             const { frontmatter } = article;
             const { path, title } = frontmatter;
 
             return (
-              <li key={index}>
+              <li key={path}>
                 <Link to={path}>
                   {title}
                 </Link>
@@ -36,11 +36,11 @@ TagTemplate.propTypes = {
     articles: PropTypes.arrayOf(PropTypes.shape({
       frontmatter: PropTypes.shape({
         path: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired
-      }).isRequired
+        title: PropTypes.string.isRequired,
+      }).isRequired,
     })),
-    tagName: PropTypes.string.isRequired
-  }).isRequired
+    tagName: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default TagTemplate;

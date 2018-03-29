@@ -13,17 +13,17 @@ const TagList = ({ tags }) => (
       </Link>
     </header>
     <ul className="tagLinks">
-      {tags.map((tag, index) =>
-        <li className="tag" key={index}>
+      {tags.map(tag => (
+        <li className="tag" key={tag}>
           <Link to={`/tags/${tag}`}>{tag}</Link>
         </li>
-      )}
+      ))}
     </ul>
   </section>
 );
 
 TagList.propTypes = {
-  tags: propTypes.array.isRequired,
+  tags: propTypes.arrayOf(propTypes.string).isRequired,
 };
 
 export default TagList;

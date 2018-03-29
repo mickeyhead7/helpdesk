@@ -1,30 +1,36 @@
-import propTypes from 'prop-types';
-import queryString from 'query-string';
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import queryString from 'query-string';
 import Link, { navigateTo } from 'gatsby-link';
 
 import './styles.scss';
 
 class Header extends Component {
-  static propTypes = {
-    location: propTypes.shape({
-      search: propTypes.string.isRequired,
-    }).isRequired,
-  };
-
   state = {
     searchValue: '',
   };
 
-  componentDidMount () {
+  componentWillMount() {
     const parsed = queryString.parse(this.props.location.search);
 
     this.setState({
-      searchValue: parsed.search
+      searchValue: parsed.search,
     });
   }
 
-  render () {
+  handleChange = (event) => {
+    this.setState({
+      searchValue: event.target.value,
+    });
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+
+    navigateTo(`/search?search=${this.state.searchValue}`);
+  }
+
+  render() {
     return (
       <div className="header">
         <div className="headerContainer">
@@ -40,9 +46,10 @@ class Header extends Component {
             className="search"
             onSubmit={this.handleSubmit}
           >
-            <label>
+            <label htmlFor="search">
               <input
                 defaultValue={this.state.searchValue}
+                id="search"
                 onChange={this.handleChange}
                 placeholder="Search"
                 type="text"
@@ -51,20 +58,14 @@ class Header extends Component {
           </form>
         </div>
       </div>
-    )
-  }
-
-  handleChange = event => {
-    this.setState({
-      searchValue: event.target.value,
-    });
-  }
-
-  handleSubmit = event => {
-    event.preventDefault();
-
-    navigateTo(`/search?search=${this.state.searchValue}`);
+    );
   }
 }
+
+Header.propTypes = {
+  location: PropTypes.shape({
+    search: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export default Header;

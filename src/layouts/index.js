@@ -1,9 +1,9 @@
-import React from 'react'
-import Helmet from 'react-helmet'
-import PropTypes from 'prop-types'
-import Header from '../components/Header'
+import React from 'react';
+import Helmet from 'react-helmet';
+import PropTypes from 'prop-types';
+import Header from '../components/Header';
 
-import './styles.scss'
+import './styles.scss';
 
 const TemplateWrapper = ({ children, location }) => (
   <div>
@@ -19,10 +19,18 @@ const TemplateWrapper = ({ children, location }) => (
       {children()}
     </main>
   </div>
-)
+);
 
 TemplateWrapper.propTypes = {
   children: PropTypes.func,
-}
+  location: PropTypes.shape({
+    search: PropTypes.string,
+  }),
+};
 
-export default TemplateWrapper
+TemplateWrapper.defaultProps = {
+  children: () => {},
+  location: {},
+};
+
+export default TemplateWrapper;
