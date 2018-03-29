@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'gatsby-link';
 import PropTypes from 'prop-types';
+import slugify from 'slugify';
 import Card from '../../packages/patterns/Card';
 
 import './styles.scss';
@@ -12,7 +13,7 @@ const ArticleList = ({ articles }) => (
       const { excerpt, path, title } = frontmatter;
 
       return (
-        <article className="article" key={path}>
+        <article className="article" key={slugify(path)}>
           <Card>
             <header>
               <h3>

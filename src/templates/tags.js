@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
+import slugify from 'slugify';
 import BodyHeader from '../components/BodyHeader';
 
 const TagsTemplate = ({ pathContext }) => {
@@ -14,7 +15,7 @@ const TagsTemplate = ({ pathContext }) => {
       <section>
         <ul>
           {tags.map(tag => (
-            <li key={tag}>
+            <li key={slugify(tag)}>
               <Link to={`/tags/${tag}`}>
                 {tag}
               </Link>

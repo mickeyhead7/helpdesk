@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
+import slugify from 'slugify';
 import BodyHeader from '../components/BodyHeader';
 
 const TagTemplate = ({ pathContext }) => {
@@ -18,7 +19,7 @@ const TagTemplate = ({ pathContext }) => {
             const { path, title } = frontmatter;
 
             return (
-              <li key={path}>
+              <li key={slugify(path)}>
                 <Link to={path}>
                   {title}
                 </Link>

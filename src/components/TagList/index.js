@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'gatsby-link';
 import propTypes from 'prop-types';
+import slugify from 'slugify';
 
 import './styles.scss';
 
@@ -14,7 +15,7 @@ const TagList = ({ tags }) => (
     </header>
     <ul className="tagLinks">
       {tags.map(tag => (
-        <li className="tag" key={tag}>
+        <li className="tag" key={slugify(tag)}>
           <Link to={`/tags/${tag}`}>{tag}</Link>
         </li>
       ))}
