@@ -1,0 +1,42 @@
+.articleList {
+    $desktopUp: "only screen and (min-width: 60.0625em)";
+
+    margin: 0 -1em 2em;
+
+    @media #{$desktopUp} {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .article {
+        margin: 0 1em 2em;
+        
+        @media #{$desktopUp} {
+            display: flex;
+            flex-direction: column;
+            width: calc(50% - 2em);
+        }
+
+        .articleContent {
+            max-height: 15em;
+            min-height: 5em;
+            overflow: hidden;
+            position: relative;
+                
+                &:after {
+                    background-image: linear-gradient(transparent, #fff);
+                    bottom: 0;
+                    content: "";
+                    display: block;
+                    height: 5em;
+                    left: 0;
+                    position: absolute;
+                    width: 100%;
+                }
+
+            p {
+                margin: 0;
+            }
+        }
+    }
+}

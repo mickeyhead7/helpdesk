@@ -1,0 +1,47 @@
+@import '../../themes/default/settings.media.scss';
+
+.tagsList {
+    .tagsHeader {
+        .allTagsLink {
+            display: inline-block;
+            margin: 0 0 1em;
+        }
+
+        @media #{$desktopUp} {
+            display: flex;
+            align-items: center;
+
+            .allTagsLink {
+                margin: 0 0 1em auto;
+            }
+        }
+    }
+
+    .tagLinks {
+        $tabletUp: "only screen and (min-width: 40.0625em)";
+        $desktopUp: "only screen and (min-width: 60.0625em)";
+
+        font-family: sans-serif;
+        margin: 0 -1em 2em;
+
+        @media #{$tabletUp} {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            list-style: none;
+            margin: 0 1em 2em;
+            
+            @media #{$tabletUp} {
+                display: flex;
+                flex-direction: column;
+                width: calc(50% - 2em);
+            }
+
+            @media #{$desktopUp} {
+                width: calc(25% - 2em);
+            }
+        }
+    }
+}
