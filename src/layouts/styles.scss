@@ -2,11 +2,11 @@
 @import '../themes/default/resets.scss';
 
 .mainContent {
-    margin: 0 auto;
-    max-width: 80em;
-    padding: 0 1em;
+  margin: 0 auto;
+  max-width: 80em;
+  padding: 0 1em;
 
-    @media #{$desktopUp} {
-        padding: 0 2em;
-    }
+  @media #{$desktopUp} {
+    padding: 0 2em;
+  }
 }
