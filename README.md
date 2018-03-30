@@ -1,26 +1,54 @@
-# gatsby-starter-default
-The default Gatsby starter.
+# Helpdesk
 
-For an overview of the project structure please refer to the [Gatsby documentation - Building with Components](https://www.gatsbyjs.org/docs/building-with-components/).
+This is a static helpdesk site generated using [GatsbyJS](https://www.gatsbyjs.org).
 
-## Install
+## Writing new articles
+Add articles in markdown format to the `/src/articles` folder. These are statically generated on build. 
+For now, use the format of the existing example articles.
+
+## Usage
+
+### Development
 
 Make sure that you have the Gatsby CLI program installed:
+
 ```sh
 npm install --global gatsby-cli
 ```
 
-And run from your CLI:
-```sh
-gatsby new gatsby-example-site
-```
-
 Then you can run it by:
+
 ```sh
 cd gatsby-example-site
-npm run develop
+yarn develop
 ```
 
-## Deploy
+Then visit http://localhost:8000
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)
+### GraphQL
+
+Test GraphQL queries by visiting http://localhost:8000/___graphql
+
+### Storybook
+
+View patterns using storybook:
+
+```sh
+yarn storybook
+```
+
+Then visit http://localhost:9001
+
+### Linting
+
+Lint all:
+
+```sh
+yarn lint
+```
+
+Lint JS only:
+
+```sh
+yarn lint:js
+```
