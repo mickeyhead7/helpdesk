@@ -5,9 +5,9 @@ import slugify from 'slugify';
 import BodyHeader from '../components/BodyHeader';
 
 const TagTemplate = ({ pathContext }) => {
-  const { articles, tagName } = pathContext;
+  const { tagArticles: articles, tagName } = pathContext;
 
-  return articles ? (
+  return (
     <div>
       <BodyHeader>
         <h1>Articles about {tagName}</h1>
@@ -29,7 +29,7 @@ const TagTemplate = ({ pathContext }) => {
         </ul>
       </section>
     </div>
-  ) : null;
+  );
 };
 
 TagTemplate.propTypes = {
