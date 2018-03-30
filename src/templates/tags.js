@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
+import slugify from 'slugify';
 import BodyHeader from '../components/BodyHeader';
 
 const TagsTemplate = ({ pathContext }) => {
-  const { tags } = pathContext
+  const { tags } = pathContext;
 
   return tags ? (
     <div>
@@ -14,7 +15,7 @@ const TagsTemplate = ({ pathContext }) => {
       <section>
         <ul>
           {tags.map(tag => (
-            <li key={tag}>
+            <li key={slugify(tag)}>
               <Link to={`/tags/${tag}`}>
                 {tag}
               </Link>
@@ -26,10 +27,10 @@ const TagsTemplate = ({ pathContext }) => {
   ) : null;
 };
 
-TagsTemplate.PropTypes = {
+TagsTemplate.propTypes = {
   pathContext: PropTypes.shape({
-    tags: PropTypes.arrayOf(PropTypes.string.isRequired)
-  }).isRequired
+    tags: PropTypes.arrayOf(PropTypes.string.isRequired),
+  }).isRequired,
 };
 
-export default TagsTemplate
+export default TagsTemplate;

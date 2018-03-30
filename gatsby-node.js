@@ -1,46 +1,46 @@
 const path = require('path');
 
 const createTagPages = (createPage, articles) => {
-  const tagTemplate = path.resolve(`src/templates/tag.js`)
-  const tagsTemplate = path.resolve(`src/templates/tags.js`)
+  const tagTemplate = path.resolve('src/templates/tag.js');
+  const tagsTemplate = path.resolve('src/templates/tags.js');
 
-  const articlesByTags = {}
+  const articlesByTags = {};
 
   articles.forEach(({ node }) => {
     if (node.frontmatter.tags) {
-      node.frontmatter.tags.forEach(tag => {
+      node.frontmatter.tags.forEach((tag) => {
         if (!articlesByTags[tag]) {
-          articlesByTags[tag] = []
+          articlesByTags[tag] = [];
         }
 
-        articlesByTags[tag].push(node)
-      })
+        articlesByTags[tag].push(node);
+      });
     }
-  })
+  });
 
-  const tags = Object.keys(articlesByTags)
+  const tags = Object.keys(articlesByTags);
 
   createPage({
-    path: `/tags`,
+    path: '/tags',
     component: tagsTemplate,
     context: {
-      tags: tags.sort()
-    }
-  })
+      tags: tags.sort(),
+    },
+  });
 
-  tags.forEach(tagName => {
-    const articles = articlesByTags[tagName]
+  tags.forEach((tagName) => {
+    const tagArticles = articlesByTags[tagName];
 
     createPage({
       path: `/tags/${tagName}`,
       component: tagTemplate,
       context: {
-        articles,
-        tagName
-      }
-    })
-  })
-}
+        tagArticles,
+        tagName,
+      },
+    });
+  });
+};
 
 exports.createPages = ({ boundActionCreators, graphql }) => {
   const { createPage } = boundActionCreators;
@@ -64,7 +64,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
         }
       }
     }
-  `).then(result => {
+  `).then((result) => {
     if (result.errors) {
       return Promise.reject(result.errors);
     }
@@ -79,9 +79,11 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
         component: articleTemplate,
         context: {
           prev: index === 0 ? null : articles[index - 1].node,
-          next: index === (articles.length - 1) ? null : articles[index + 1].node
-        }
+          next: index === (articles.length - 1) ? null : articles[index + 1].node,
+        },
       });
     });
+
+    return Promise.resolve();
   });
 };

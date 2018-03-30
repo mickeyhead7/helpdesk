@@ -7,10 +7,10 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-transformer-remark',
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `src/articles`,
-        path: `${__dirname}/src/articles`
+        name: 'src/articles',
+        path: `${__dirname}/src/articles`,
       },
     },
   ],

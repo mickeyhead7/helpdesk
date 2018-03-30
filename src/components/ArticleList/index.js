@@ -1,18 +1,19 @@
 import React from 'react';
 import Link from 'gatsby-link';
 import PropTypes from 'prop-types';
+import slugify from 'slugify';
 import Card from '../../packages/patterns/Card';
 
 import './styles.scss';
 
 const ArticleList = ({ articles }) => (
   <section className="articleList">
-    {articles.map((article, index) => {
+    {articles.map((article) => {
       const { node: { frontmatter } } = article;
       const { excerpt, path, title } = frontmatter;
 
       return (
-        <article className="article" key={index}>
+        <article className="article" key={slugify(path)}>
           <Card>
             <header>
               <h3>
@@ -35,9 +36,9 @@ ArticleList.propTypes = {
       frontmatter: PropTypes.shape({
         excerpt: PropTypes.string.isRequired,
         path: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired
-      }).isRequired
-    }).isRequired
+        title: PropTypes.string.isRequired,
+      }).isRequired,
+    }).isRequired,
   })).isRequired,
 };
 

@@ -10,7 +10,7 @@ const BodyHeader = ({ children }) => (
 );
 
 BodyHeader.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
 export default BodyHeader;
