@@ -4,7 +4,7 @@ exports[`Header 1`] = `
 <Header
   location={
     Object {
-      "search": "search text",
+      "search": "?search=search text",
     }
   }
 >
@@ -34,6 +34,7 @@ exports[`Header 1`] = `
           htmlFor="search"
         >
           <input
+            defaultValue="search text"
             id="search"
             onChange={[Function]}
             placeholder="Search"

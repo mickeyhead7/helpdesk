@@ -6,16 +6,14 @@ import Link, { navigateTo } from 'gatsby-link';
 import './styles.scss';
 
 class Header extends Component {
-  state = {
-    searchValue: '',
-  };
+  constructor(props) {
+    super();
 
-  componentWillMount() {
-    const parsed = queryString.parse(this.props.location.search);
+    const parsed = queryString.parse(props.location.search);
 
-    this.setState({
+    this.state = {
       searchValue: parsed.search,
-    });
+    };
   }
 
   handleChange = (event) => {
