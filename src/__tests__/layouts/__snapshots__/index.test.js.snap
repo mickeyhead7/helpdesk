@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header 1`] = `
+<div>
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+    meta={
+      Array [
+        Object {
+          "content": "Sample",
+          "name": "description",
+        },
+        Object {
+          "content": "sample, something",
+          "name": "keywords",
+        },
+      ]
+    }
+    title="Helpdesk"
+  />
+  <Header
+    search=""
+  />
+  <main
+    className="mainContent"
+  >
+    <p>
+      Some content...
+    </p>
+  </main>
+</div>
+`;
