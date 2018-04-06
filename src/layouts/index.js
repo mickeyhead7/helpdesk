@@ -1,36 +1,39 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
+import queryString from 'query-string';
 import Header from '../components/Header';
 
 import './styles.scss';
 
-const TemplateWrapper = ({ children, location }) => (
-  <div>
-    <Helmet
-      title="Helpdesk"
-      meta={[
-        { name: 'description', content: 'Sample' },
-        { name: 'keywords', content: 'sample, something' },
-      ]}
-    />
-    <Header location={location} />
-    <main className="mainContent">
-      {children()}
-    </main>
-  </div>
-);
+const TemplateWrapper = ({ children, search }) => {
+  const parsed = queryString.parse(search);
+
+  return (
+    <div>
+      <Helmet
+        title="Helpdesk"
+        meta={[
+          { name: 'description', content: 'Sample' },
+          { name: 'keywords', content: 'sample, something' },
+        ]}
+      />
+      <Header search={parsed.search} />
+      <main className="mainContent">
+        {children()}
+      </main>
+    </div>
+  );
+};
 
 TemplateWrapper.propTypes = {
   children: PropTypes.func,
-  location: PropTypes.shape({
-    search: PropTypes.string,
-  }),
+  search: PropTypes.string,
 };
 
 TemplateWrapper.defaultProps = {
   children: () => {},
-  location: {},
+  search: '',
 };
 
 export default TemplateWrapper;

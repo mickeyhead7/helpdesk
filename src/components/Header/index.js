@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import queryString from 'query-string';
 import Link, { navigateTo } from 'gatsby-link';
 
 import './styles.scss';
@@ -9,10 +8,8 @@ class Header extends Component {
   constructor(props) {
     super();
 
-    const parsed = queryString.parse(props.location.search);
-
     this.state = {
-      searchValue: parsed.search,
+      searchValue: props.search,
     };
   }
 
@@ -61,9 +58,11 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-  location: PropTypes.shape({
-    search: PropTypes.string.isRequired,
-  }).isRequired,
+  search: PropTypes.string,
+};
+
+Header.defaultProps = {
+  search: '',
 };
 
 export default Header;

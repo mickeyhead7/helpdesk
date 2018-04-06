@@ -2,11 +2,7 @@
 
 exports[`Header 1`] = `
 <Header
-  location={
-    Object {
-      "search": "?search=search text",
-    }
-  }
+  search="search text"
 >
   <div
     className="header"
