@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header 1`] = `
+<Header
+  location={
+    Object {
+      "search": "search text",
+    }
+  }
+>
+  <div
+    className="header"
+  >
+    <div
+      className="headerContainer"
+    >
+      <header>
+        <Link
+          className="headerLink"
+          to="/"
+        >
+          <a
+            href="/"
+          >
+            Helpdesk
+          </a>
+        </Link>
+      </header>
+      <form
+        className="search"
+        onSubmit={[Function]}
+      >
+        <label
+          htmlFor="search"
+        >
+          <input
+            id="search"
+            onChange={[Function]}
+            placeholder="Search"
+            type="text"
+          />
+        </label>
+      </form>
+    </div>
+  </div>
+</Header>
+`;

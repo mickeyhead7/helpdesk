@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header 1`] = `
+<section
+  className="tagsList"
+>
+  <header
+    className="tagsHeader"
+  >
+    <h2>
+      Popular tags
+    </h2>
+    <Link
+      className="allTagsLink"
+      to="/tags"
+    >
+      View all tags
+    </Link>
+  </header>
+  <ul
+    className="tagLinks"
+  >
+    <li
+      className="tag"
+      key="tag-one"
+    >
+      <Link
+        to="/tags/tag-one"
+      >
+        tag-one
+      </Link>
+    </li>
+    <li
+      className="tag"
+      key="tag-two"
+    >
+      <Link
+        to="/tags/tag-two"
+      >
+        tag-two
+      </Link>
+    </li>
+    <li
+      className="tag"
+      key="tag-three"
+    >
+      <Link
+        to="/tags/tag-three"
+      >
+        tag-three
+      </Link>
+    </li>
+  </ul>
+</section>
+`;

@@ -1,17 +1,19 @@
 {
   "env": {
     "browser": true,
+    "jest/globals": true,
     "node": true
   },
   "extends": "airbnb",
   "parser": "babel-eslint",
+  "plugins": ["jest"],
   "rules": {
     "import/prefer-default-export": false,
     "import/no-extraneous-dependencies": false,
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "jsx-a11y/anchor-is-valid": [ "error", {
       "components": [ "Link" ],
       "specialLink": [ "to" ]
-    }]
+    }],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
   }
 }
