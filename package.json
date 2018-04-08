@@ -23,6 +23,7 @@
     "gatsby-plugin-sass": "^1.0.24",
     "gatsby-source-filesystem": "^1.5.27",
     "gatsby-transformer-remark": "^1.7.37",
+    "node-polyglot": "^2.2.2",
     "query-string": "^6.0.0",
     "ramda": "^0.25.0",
     "react": "^16.3.1",
