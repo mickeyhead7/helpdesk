@@ -4,6 +4,10 @@ import { extractTagsFromMarkdown } from '../packages/helpers/content';
 import BodyHeader from '../components/BodyHeader';
 import ArticleList from '../components/ArticleList';
 import TagList from '../components/TagList';
+import language from '../languages/en-GB';
+import { createInstance, translator } from '../packages/helpers/i18n/translate';
+
+const translate = translator(createInstance(language));
 
 const IndexPage = ({ data }) => {
   const { edges: articles } = data.allMarkdownRemark;
@@ -12,11 +16,11 @@ const IndexPage = ({ data }) => {
   return (
     <div>
       <BodyHeader>
-        <h1>Welcome to the helpdesk</h1>
+        <h1>{translate('messages.welcome')}</h1>
       </BodyHeader>
       <section>
         <header>
-          <h2>Latest articles</h2>
+          <h2>{translate('messages.latestArticles')}</h2>
         </header>
         <ArticleList articles={articles} />
       </section>

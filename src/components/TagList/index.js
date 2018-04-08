@@ -2,15 +2,19 @@ import React from 'react';
 import Link from 'gatsby-link';
 import propTypes from 'prop-types';
 import slugify from 'slugify';
+import language from './languages/en-GB';
+import { createInstance, translator } from '../../packages/helpers/i18n/translate';
 
 import './styles.scss';
+
+const translate = translator(createInstance(language));
 
 const TagList = ({ tags }) => (
   <section className="tagsList">
     <header className="tagsHeader">
-      <h2>Popular tags</h2>
+      <h2>{translate('messages.popularTags')}</h2>
       <Link className="allTagsLink" to="/tags">
-        View all tags
+        {translate('links.allTags')}
       </Link>
     </header>
     <ul className="tagLinks">
