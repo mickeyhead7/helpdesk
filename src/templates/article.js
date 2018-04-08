@@ -73,7 +73,11 @@ ArticleTemplate.propTypes = {
 /* eslint-disable no-undef */
 export const query = graphql`
   query ArticleByPath($path: String!) {
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
+    markdownRemark(frontmatter: {
+      path: { 
+        eq: $path
+      } 
+    }) {
       html
       frontmatter {
         title
