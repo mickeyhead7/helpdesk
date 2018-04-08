@@ -16,7 +16,7 @@ const IndexPage = ({ data }) => {
       </BodyHeader>
       <section>
         <header>
-          <h2>Top articles</h2>
+          <h2>Latest articles</h2>
         </header>
         <ArticleList articles={articles} />
       </section>
@@ -38,7 +38,13 @@ IndexPage.propTypes = {
 /* eslint-disable no-undef */
 export const query = graphql`
   query IndexQuery {
-    allMarkdownRemark {
+    allMarkdownRemark(
+      sort: {
+        order: DESC,
+        fields: [frontmatter___date]
+      },
+      limit: 6
+    ) {
       totalCount
       edges {
         node {
