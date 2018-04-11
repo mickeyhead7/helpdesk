@@ -3,9 +3,18 @@ import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
 import slugify from 'slugify';
 import BodyHeader from '../components/BodyHeader';
+import Pagination from '../packages/patterns/Pagination';
 
 const TagTemplate = ({ pathContext }) => {
-  const { tagArticles: articles, tagName } = pathContext;
+  const {
+    additionalContext,
+    group: articles,
+    index,
+    first,
+    last,
+    pageCount,
+  } = pathContext;
+  const { tagName } = additionalContext;
 
   return (
     <div>
@@ -15,7 +24,8 @@ const TagTemplate = ({ pathContext }) => {
       <section>
         <ul>
           {articles.map((article) => {
-            const { frontmatter } = article;
+            const { node } = article;
+            const { frontmatter } = node;
             const { path, title } = frontmatter;
 
             return (
@@ -28,19 +38,34 @@ const TagTemplate = ({ pathContext }) => {
           })}
         </ul>
       </section>
+      <Pagination
+        index={index}
+        first={first}
+        last={last}
+        pageCount={pageCount}
+        urlPrefix={`/tags/${tagName}`}
+      />
     </div>
   );
 };
 
 TagTemplate.propTypes = {
   pathContext: PropTypes.shape({
+    additionalContext: PropTypes.shape({
+      tagName: PropTypes.string.isRequired,
+    }),
     articles: PropTypes.arrayOf(PropTypes.shape({
-      frontmatter: PropTypes.shape({
-        path: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-      }).isRequired,
+      node: PropTypes.shape({
+        frontmatter: PropTypes.shape({
+          path: PropTypes.string.isRequired,
+          title: PropTypes.string.isRequired,
+        }).isRequired,
+      }),
     })),
-    tagName: PropTypes.string.isRequired,
+    index: PropTypes.number.isRequired,
+    first: PropTypes.bool.isRequired,
+    last: PropTypes.bool.isRequired,
+    pageCount: PropTypes.number.isRequired,
   }).isRequired,
 };
 

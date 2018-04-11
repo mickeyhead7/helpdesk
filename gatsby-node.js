@@ -1,19 +1,18 @@
 const path = require('path');
+const createPaginatedPages = require('gatsby-paginate');
 
 const createTagPages = (createPage, articles) => {
-  const tagTemplate = path.resolve('src/templates/tag.js');
   const tagsTemplate = path.resolve('src/templates/tags.js');
-
   const articlesByTags = {};
 
-  articles.forEach(({ node }) => {
-    if (node.frontmatter.tags) {
-      node.frontmatter.tags.forEach((tag) => {
+  articles.forEach((article) => {
+    if (article.node.frontmatter.tags) {
+      article.node.frontmatter.tags.forEach((tag) => {
         if (!articlesByTags[tag]) {
           articlesByTags[tag] = [];
         }
 
-        articlesByTags[tag].push(node);
+        articlesByTags[tag].push(article);
       });
     }
   });
@@ -31,13 +30,15 @@ const createTagPages = (createPage, articles) => {
   tags.forEach((tagName) => {
     const tagArticles = articlesByTags[tagName];
 
-    createPage({
-      path: `/tags/${tagName}`,
-      component: tagTemplate,
+    createPaginatedPages({
       context: {
-        tagArticles,
         tagName,
       },
+      edges: tagArticles,
+      createPage,
+      pageTemplate: 'src/templates/tag.js',
+      pageLength: 2,
+      pathPrefix: `tags/${tagName}`,
     });
   });
 };
