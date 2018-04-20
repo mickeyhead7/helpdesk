@@ -12,7 +12,7 @@ const phrases = {
   'en-GB': enGB,
 };
 
-const Tag = ({
+export const Tag = ({
   locale,
   articles,
   index,

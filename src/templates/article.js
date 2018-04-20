@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import Store from '@packages/Components/Store';
-import Article from '@Components/Article';
+import ArticleConnected from '@Components/Article';
 
 const ArticleTemplate = ({ data, pathContext }) => {
   const { markdownRemark: article } = data;
@@ -14,7 +14,7 @@ const ArticleTemplate = ({ data, pathContext }) => {
     <Store>
       <Fragment>
         <Helmet title={title} />
-        <Article
+        <ArticleConnected
           {...article}
           prev={prev}
           next={next}

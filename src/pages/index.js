@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { extractTagsFromMarkdown } from '@packages/helpers/content';
-import Homepage from '@Components/Homepage';
+import HomepageConnected from '@Components/Homepage';
 import Store from '@packages/Components/Store';
 
 const IndexPage = ({ data }) => {
@@ -10,7 +10,7 @@ const IndexPage = ({ data }) => {
 
   return (
     <Store>
-      <Homepage
+      <HomepageConnected
         articles={articles}
         tags={tags}
       />

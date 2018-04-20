@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import queryString from 'query-string';
 import { Provider } from 'react-redux';
-import SearchResults from '@Components/SearchResults';
+import SearchResultsConnected from '@Components/SearchResults';
 import store from '@store';
 
 const articles = [];
@@ -12,7 +12,7 @@ const SearchPage = ({ location }) => {
 
   return (
     <Provider store={store}>
-      <SearchResults
+      <SearchResultsConnected
         articles={articles}
         search={parsed.search}
       />

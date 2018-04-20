@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Store from '@packages/Components/Store';
-import Tag from '@Components/Tag';
+import TagConnected from '@Components/Tag';
 
 const TagTemplate = ({ pathContext }) => {
   const {
@@ -16,7 +16,7 @@ const TagTemplate = ({ pathContext }) => {
 
   return (
     <Store>
-      <Tag
+      <TagConnected
         articles={articles}
         index={index}
         first={first}
