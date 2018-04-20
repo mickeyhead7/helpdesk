@@ -1,19 +1,21 @@
-.articleList {
-  $desktopUp: "only screen and (min-width: 60.0625em)";
+@import "../../themes/default/settings.colors.scss";
+@import "../../themes/default/settings.media.scss";
 
-  margin: 0 -1em 2em;
+.articleList {
+  margin: 0 -1em 1em;
 
   @media #{$desktopUp} {
     display: flex;
     flex-wrap: wrap;
   }
 
-  .article {
-    margin: 0 1em 2em;
+  .articlePartial {
+    margin: 0 1em 1em;
 
     @media #{$desktopUp} {
       display: flex;
       flex-direction: column;
+      margin: 0 1em 2em;
       width: calc(50% - 2em);
     }
 
@@ -24,7 +26,7 @@
       position: relative;
 
       &::after {
-        background-image: linear-gradient(transparent, #fff);
+        background-image: linear-gradient(transparent, $white);
         bottom: 0;
         content: "";
         display: block;

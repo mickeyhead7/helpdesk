@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Homepage 1`] = `
+<Connect(Provider)
+  locale="en-GB"
+  phrases={
+    Object {
+      "en-GB": Object {
+        "messages": Object {
+          "latestArticles": "Latest articles",
+          "welcome": "Welcome to the helpdesk",
+        },
+      },
+    }
+  }
+>
+  <BodyHeader>
+    <h1>
+      <Connect(Translate)
+        locale="en-GB"
+        phrase="messages.welcome"
+      />
+    </h1>
+  </BodyHeader>
+  <section>
+    <header>
+      <h2>
+        <Connect(Translate)
+          locale="en-GB"
+          phrase="messages.latestArticles"
+        />
+      </h2>
+    </header>
+    <ArticleList
+      articles={
+        Array [
+          Object {
+            "node": Object {
+              "frontmatter": Object {
+                "date": "1970-01-01 00:00:00",
+                "excerpt": "This is the article excerpt.",
+                "path": "/article-path",
+                "title": "Article title",
+              },
+              "html": <div>
+                Some html
+              </div>,
+            },
+          },
+        ]
+      }
+    />
+  </section>
+  <section>
+    <Connect(TagList)
+      tags={
+        Array [
+          "tag-one",
+          "tag-two",
+          "tag-three",
+        ]
+      }
+    />
+  </section>
+</Connect(Provider)>
+`;

@@ -2,7 +2,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
 import queryString from 'query-string';
-import Header from '../components/Header';
+import Header from '@Components/Header';
 
 import './styles.scss';
 

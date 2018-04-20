@@ -1,19 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
-import language from './languages/en-GB';
-import { createInstance, pluraliser, translator } from '../../../packages/helpers/i18n/translate';
+import { connect } from 'react-redux';
+import I18nProvider from '@packages/Components/i18n/Provider';
+import Translate from '@packages/Components/i18n/Translate';
+import Pluralise from '@packages/Components/i18n/Pluralise';
+import enGB from './languages/en-GB';
 
 import './styles.scss';
 
-const translate = translator(createInstance(language));
-const pluralise = pluraliser(createInstance(language));
+const phrases = {
+  'en-GB': enGB,
+};
+
 const createUrl = (prefix = '', url) => (prefix ? `${prefix}/${url}` : url);
 
 const Pagination = ({
   index,
   first,
   last,
+  locale,
   pageCount,
   urlPrefix,
 }) => {
@@ -21,27 +27,41 @@ const Pagination = ({
   const nextUrl = createUrl(urlPrefix, last ? '' : index + 1);
 
   return (
-    <div className="pagination">
-      <ul>
-        <li>
-          {!first ? (
-            <Link to={prevUrl}>{translate('labels.prev')}</Link>
-          ) : (
-            <span>{translate('labels.prev')}</span>
-          )}
-        </li>
-        <li>
-          {!last ? (
-            <Link to={nextUrl}>{translate('labels.next')}</Link>
-          ) : (
-            <span>{translate('labels.next')}</span>
-          )}
-        </li>
-        <li className="pageCount">
-          <span>{pluralise('labels.pageCount', pageCount)}</span>
-        </li>
-      </ul>
-    </div>
+    pageCount > 1 ? (
+      <I18nProvider locale={locale} phrases={phrases}>
+        <div className="pagination">
+          <ul>
+            <li>
+              {!first ? (
+                <Link to={prevUrl}>
+                  <Translate locale={locale} phrase="labels.prev" />
+                </Link>
+              ) : (
+                <span>
+                  <Translate locale={locale} phrase="labels.prev" />
+                </span>
+              )}
+            </li>
+            <li>
+              {!last ? (
+                <Link to={nextUrl}>
+                  <Translate locale={locale} phrase="labels.next" />
+                </Link>
+              ) : (
+                <span>
+                  <Translate locale={locale} phrase="labels.next" />
+                </span>
+              )}
+            </li>
+            <li className="pageCount">
+              <span>
+                <Pluralise count={pageCount} locale={locale} phrase="labels.pageCount" />
+              </span>
+            </li>
+          </ul>
+        </div>
+      </I18nProvider>
+    ) : null
   );
 };
 
@@ -49,6 +69,7 @@ Pagination.propTypes = {
   index: PropTypes.number.isRequired,
   first: PropTypes.bool.isRequired,
   last: PropTypes.bool.isRequired,
+  locale: PropTypes.string.isRequired,
   pageCount: PropTypes.number.isRequired,
   urlPrefix: PropTypes.string,
 };
@@ -57,4 +78,8 @@ Pagination.defaultProps = {
   urlPrefix: null,
 };
 
-export default Pagination;
+const mapStateToProps = ({ i18n }) => ({
+  locale: i18n.locale,
+});
+
+export default connect(mapStateToProps)(Pagination);

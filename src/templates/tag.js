@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Link from 'gatsby-link';
-import slugify from 'slugify';
-import BodyHeader from '../components/BodyHeader';
-import Pagination from '../packages/patterns/Pagination';
+import Store from '@packages/Components/Store';
+import Tag from '@Components/Tag';
 
 const TagTemplate = ({ pathContext }) => {
   const {
@@ -17,35 +15,16 @@ const TagTemplate = ({ pathContext }) => {
   const { tagName } = additionalContext;
 
   return (
-    <div>
-      <BodyHeader>
-        <h1>Articles about {tagName}</h1>
-      </BodyHeader>
-      <section>
-        <ul>
-          {articles.map((article) => {
-            const { node } = article;
-            const { frontmatter } = node;
-            const { path, title } = frontmatter;
-
-            return (
-              <li key={slugify(path)}>
-                <Link to={path}>
-                  {title}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </section>
-      <Pagination
+    <Store>
+      <Tag
+        articles={articles}
         index={index}
         first={first}
         last={last}
         pageCount={pageCount}
-        urlPrefix={`/tags/${tagName}`}
+        tagName={tagName}
       />
-    </div>
+    </Store>
   );
 };
 

@@ -1,5 +1,16 @@
 const path = require('path');
 const createPaginatedPages = require('gatsby-paginate');
+const aliases = require('./aliases');
+
+exports.modifyWebpackConfig = ({ config }) => {
+  config.merge({
+    resolve: {
+      alias: aliases || {},
+    },
+  });
+
+  return config;
+};
 
 const createTagPages = (createPage, articles) => {
   const tagsTemplate = path.resolve('src/templates/tags.js');
@@ -28,6 +39,7 @@ const createTagPages = (createPage, articles) => {
   });
 
   tags.forEach((tagName) => {
+    const articlesPerPage = 10;
     const tagArticles = articlesByTags[tagName];
 
     createPaginatedPages({
@@ -37,7 +49,7 @@ const createTagPages = (createPage, articles) => {
       edges: tagArticles,
       createPage,
       pageTemplate: 'src/templates/tag.js',
-      pageLength: 2,
+      pageLength: articlesPerPage,
       pathPrefix: `tags/${tagName}`,
     });
   });

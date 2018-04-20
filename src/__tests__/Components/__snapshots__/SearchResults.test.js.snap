@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchResults 1`] = `
+<Connect(Provider)
+  locale="en-GB"
+  phrases={
+    Object {
+      "en-GB": Object {
+        "messages": Object {
+          "searchResultsFor": "Search results for \\"%{search}\\"",
+        },
+      },
+    }
+  }
+>
+  <BodyHeader>
+    <h1>
+      <Connect(Translate)
+        locale="en-GB"
+        params={
+          Object {
+            "search": "search-text",
+          }
+        }
+        phrase="messages.searchResultsFor"
+      />
+    </h1>
+  </BodyHeader>
+  <ArticleList
+    articles={Array []}
+  />
+</Connect(Provider)>
+`;

@@ -1,0 +1,106 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Article 1`] = `
+<Connect(Provider)
+  locale="en-GB"
+  phrases={
+    Object {
+      "en-GB": Object {
+        "messages": Object {
+          "moreArticles": "More articles...",
+          "nextArticle": "Next article",
+          "postedDate": "Posted %{date}",
+          "previousArticle": "Previous article",
+        },
+      },
+    }
+  }
+>
+  <article
+    className="articleFull"
+  >
+    <BodyHeader>
+      <div
+        className="articleHeader"
+      >
+        <h1>
+          Article title
+        </h1>
+        <small
+          className="articleDate"
+        >
+          <Connect(Translate)
+            locale="en-GB"
+            params={
+              Object {
+                "date": "1970-01-01 00:00:00",
+              }
+            }
+            phrase="messages.postedDate"
+          />
+        </small>
+      </div>
+    </BodyHeader>
+    <section
+      className="articleContent"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": <div>
+            Some html
+          </div>,
+        }
+      }
+    />
+    <section>
+      <React.Fragment>
+        <h2>
+          <Connect(Translate)
+            locale="en-GB"
+            phrase="messages.moreArticles"
+          />
+        </h2>
+        <ul
+          className="articleLinks"
+        >
+          <li>
+            <Card>
+              <h3>
+                <Connect(Translate)
+                  locale="en-GB"
+                  phrase="messages.previousArticle"
+                />
+              </h3>
+              <h4>
+                <Link
+                  to="/article-path"
+                >
+                  Article title
+                </Link>
+              </h4>
+              <p />
+            </Card>
+          </li>
+          <li>
+            <Card>
+              <h3>
+                <Connect(Translate)
+                  locale="en-GB"
+                  phrase="messages.nextArticle"
+                />
+              </h3>
+              <h4>
+                <Link
+                  to="/article-path"
+                >
+                  Article title
+                </Link>
+              </h4>
+              <p />
+            </Card>
+          </li>
+        </ul>
+      </React.Fragment>
+    </section>
+  </article>
+</Connect(Provider)>
+`;

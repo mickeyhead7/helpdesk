@@ -1,5 +1,5 @@
 import React from 'react';
-import BodyHeader from '../components/BodyHeader';
+import BodyHeader from '@Components/BodyHeader';
 
 const NotFoundPage = () => (
   <div>

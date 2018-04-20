@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import BodyHeader from '../../components/BodyHeader';
+import BodyHeader from '../../Components/BodyHeader';
 
 const BodyHeaderContent = () => <p>This is some body header content</p>;
 

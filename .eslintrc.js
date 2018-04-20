@@ -1,4 +1,7 @@
-{
+const aliases = require('./aliases');
+const aliasesFormatted = Object.entries(aliases);
+
+module.exports = {
   "env": {
     "browser": true,
     "jest/globals": true,
@@ -15,5 +18,10 @@
       "specialLink": [ "to" ]
     }],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+  },
+  "settings": {
+    "import/resolver": {
+      "alias": aliasesFormatted
+    }
   }
-}
+};
