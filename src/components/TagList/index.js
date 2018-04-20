@@ -1,34 +1,47 @@
 import React from 'react';
 import Link from 'gatsby-link';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import slugify from 'slugify';
-import language from './languages/en-GB';
-import { createInstance, translator } from '../../packages/helpers/i18n/translate';
+import { connect } from 'react-redux';
+import I18nProvider from '@packages/Components/i18n/Provider';
+import Translate from '@packages/Components/i18n/Translate';
+import enGB from './languages/en-GB';
 
 import './styles.scss';
 
-const translate = translator(createInstance(language));
+const phrases = {
+  'en-GB': enGB,
+};
 
-const TagList = ({ tags }) => (
-  <section className="tagsList">
-    <header className="tagsHeader">
-      <h2>{translate('messages.popularTags')}</h2>
-      <Link className="allTagsLink" to="/tags">
-        {translate('links.allTags')}
-      </Link>
-    </header>
-    <ul className="tagLinks">
-      {tags.map(tag => (
-        <li className="tag" key={slugify(tag)}>
-          <Link to={`/tags/${tag}`}>{tag}</Link>
-        </li>
-      ))}
-    </ul>
-  </section>
+export const TagList = ({ locale, tags }) => (
+  <I18nProvider locale={locale} phrases={phrases}>
+    <section className="tagsList">
+      <header className="tagsHeader">
+        <h2>
+          <Translate locale={locale} phrase="messages.popularTags" />
+        </h2>
+        <Link className="allTagsLink" to="/tags">
+          <Translate locale={locale} phrase="links.allTags" />
+        </Link>
+      </header>
+      <ul className="tagLinks">
+        {tags.map(tag => (
+          <li className="tag" key={slugify(tag)}>
+            <Link to={`/tags/${tag}`}>{tag}</Link>
+          </li>
+        ))}
+      </ul>
+    </section>
+  </I18nProvider>
 );
 
 TagList.propTypes = {
-  tags: propTypes.arrayOf(propTypes.string).isRequired,
+  locale: PropTypes.string.isRequired,
+  tags: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
-export default TagList;
+const mapStateToProps = ({ i18n }) => ({
+  locale: i18n.locale,
+});
+
+export default connect(mapStateToProps)(TagList);

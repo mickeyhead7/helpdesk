@@ -5,7 +5,7 @@ exports[`ArticleList 1`] = `
   className="articleList"
 >
   <article
-    className="article"
+    className="articlePartial"
     key="article-1"
   >
     <Card>
@@ -28,7 +28,7 @@ exports[`ArticleList 1`] = `
     </Card>
   </article>
   <article
-    className="article"
+    className="articlePartial"
     key="article-2"
   >
     <Card>

@@ -1,4 +1,4 @@
-import { extractTagsFromMarkdown } from '../../helpers/content';
+import { extractTagsFromMarkdown } from '@packages/helpers/content';
 
 const articles = [
   {

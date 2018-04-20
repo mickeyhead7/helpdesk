@@ -1,27 +1,28 @@
 import React from 'react';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import queryString from 'query-string';
-import BodyHeader from '../components/BodyHeader';
-import ArticleList from '../components/ArticleList';
+import { Provider } from 'react-redux';
+import SearchResults from '@Components/SearchResults';
+import store from '@store';
 
 const articles = [];
 
-const SearchPage = (props) => {
-  const parsed = queryString.parse(props.location.search);
+const SearchPage = ({ location }) => {
+  const parsed = queryString.parse(location.search);
 
   return (
-    <section>
-      <BodyHeader>
-        <h1>{`Search results for "${parsed.search}"`}</h1>
-      </BodyHeader>
-      <ArticleList articles={articles} />
-    </section>
+    <Provider store={store}>
+      <SearchResults
+        articles={articles}
+        search={parsed.search}
+      />
+    </Provider>
   );
 };
 
 SearchPage.propTypes = {
-  location: propTypes.shape({
-    search: propTypes.string.isRequired,
+  location: PropTypes.shape({
+    search: PropTypes.string.isRequired,
   }).isRequired,
 };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Card from '../patterns/Card';
+import Card from '@packages/patterns/Card';
 
 storiesOf('Card', module)
   .add('Default', () => (

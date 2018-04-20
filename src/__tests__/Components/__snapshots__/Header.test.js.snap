@@ -18,7 +18,9 @@ exports[`Header 1`] = `
           <a
             href="/"
           >
-            Helpdesk
+            <span>
+              Helpdesk
+            </span>
           </a>
         </Link>
       </header>

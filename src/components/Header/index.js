@@ -34,7 +34,7 @@ class Header extends Component {
               to="/"
               className="headerLink"
             >
-              Helpdesk
+              <span>Helpdesk</span>
             </Link>
           </header>
           <form

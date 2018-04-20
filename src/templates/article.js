@@ -1,46 +1,26 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import Link from 'gatsby-link';
-import BodyHeader from '../components/BodyHeader';
+import Store from '@packages/Components/Store';
+import Article from '@Components/Article';
 
 const ArticleTemplate = ({ data, pathContext }) => {
   const { markdownRemark: article } = data;
-  const { frontmatter, html } = article;
-  const { date, title } = frontmatter;
+  const { frontmatter } = article;
+  const { title } = frontmatter;
   const { prev, next } = pathContext;
 
   return (
-    <article>
-      <Helmet title={title} />
-      <BodyHeader>
-        <h1>{title}</h1>
-        <small>{date}</small>
-      </BodyHeader>
-      <section>
-        <div dangerouslySetInnerHTML={{ __html: html }} />
-      </section>
-      <section>
-        {(prev || next) && (
-          <ul>
-            {prev && (
-              <li>
-                <Link to={prev.frontmatter.path}>
-                  Previous: {prev.frontmatter.title}
-                </Link>
-              </li>
-            )}
-            {next && (
-              <li>
-                <Link to={next.frontmatter.path}>
-                  Next: {next.frontmatter.title}
-                </Link>
-              </li>
-            )}
-          </ul>
-        )}
-      </section>
-    </article>
+    <Store>
+      <Fragment>
+        <Helmet title={title} />
+        <Article
+          {...article}
+          prev={prev}
+          next={next}
+        />
+      </Fragment>
+    </Store>
   );
 };
 
